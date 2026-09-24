@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Employee Attrition Predictor</title>
+    <style>
+      body {
+        font-family: Arial;
+        background: #f4f6f9;
+        text-align: center;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        margin: 50px auto;
+        width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input,
+      select {
+        width: 90%;
+        padding: 8px;
+        margin: 5px 0;
+      }
+      button {
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      h2 {
+        color: #333;
+      }
+      .result {
+        margin-top: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Employee Attrition Predictor</h2>
+
+      <form action="/predict" method="post">
+        <input
+          type="text"
+          name="satisfaction"
+          placeholder="Satisfaction (0-1)"
+          required
+        />
+        <input
+          type="text"
+          name="evaluation"
+          placeholder="Evaluation (0-1)"
+          required
+        />
+        <input
+          type="number"
+          name="num_projects"
+          placeholder="Projects"
+          required
+        />
+        <input
+          type="number"
+          name="monthly_hours"
+          placeholder="Monthly Hours"
+          required
+        />
+        <input
+          type="number"
+          name="years_at_company"
+          placeholder="Years at Company"
+          required
+        />
+
+        <select name="accident">
+          <option value="0">No Accident</option>
+          <option value="1">Had Accident</option>
+        </select>
+
+        <select name="promotion">
+          <option value="0">No Promotion</option>
+          <option value="1">Got Promotion</option>
+        </select>
+
+        <select name="salary">
+          <option value="low">Low Salary</option>
+          <option value="medium">Medium Salary</option>
+          <option value="high">High Salary</option>
+        </select>
+
+        <input
+          type="text"
+          name="department"
+          placeholder="Department (sales, IT, etc)"
+          required
+        />
+
+        <button type="submit">Predict</button>
+      </form>
+
+      <div class="result">{{ prediction_text }}</div>
+    </div>
+  </body>
+</html>
